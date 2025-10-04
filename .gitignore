@@ -1,2 +1,3 @@
 tailwind.config.js
 .env
+rate_my_landlord/__pycache__/
