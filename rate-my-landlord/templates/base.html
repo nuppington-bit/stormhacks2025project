@@ -28,7 +28,7 @@
         <section class="relative w-full h-80 md:h-[400px]">
             <!-- Image -->
             <img
-                src="C:\Users\daudz\OneDrive\Desktop\stormhacks2025project\rate-my-landlord\static\images\Landlord.jpg"
+                src="{{ url_for('static', filename='images/Landlord.jpg') }}"
                 alt="Landlord"
                 class="w-full h-full object-cover shadow-md"
             />
@@ -54,7 +54,7 @@
 
         <!-- Footer -->
         <footer class="bg-white border-t py-4 text-center text-sm text-gray-500">
-            © 2025 Rate My Landlo — Made with Flask + Tailwind
+            © 2025 Rate My Landlord — Made with Flask + Tailwind
         </footer>
     </body>
 </html>
