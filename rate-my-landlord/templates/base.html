@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='style.css') }}"
+      href="{{ url_for('static', filename='/css/main.css') }}"
     />
   </head>
   <body class="bg-gray-50 text-gray-900 flex flex-col min-h-screen">
@@ -16,15 +16,12 @@
       <div
         class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center"
       >
-        <a
-          href="{{ url_for('index') }}"
-          class="text-xl font-bold text-blue-600"
-        >
+        <a href="#" class="text-xl font-bold text-blue-600">
           Rate My Professor
         </a>
         <!-- login and register buttons -->
         <div class="flex space-x-4">
-          <a href="#" class="hover:text-blue-600"> Login </a>
+          <a href="#" class="hover:text-green-700 my-auto"> Login </a>
           <a href="#" class="text-white">
             <button
               class="rounded-full px-6 bg-black hover:text-white py-1 hover:bg-green-700"
