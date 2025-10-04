@@ -33,28 +33,35 @@
       </div>
     </nav>
     <section class="relative w-full h-80 md:h-[400px]">
-    <!-- Image -->
-    <img 
-        src="C:\Users\daudz\OneDrive\Desktop\stormhacks2025project\rate-my-landlord\static\images\Landlord.jpg" 
+      <!-- Image -->
+      <img
+        src="{{ url_for('static', filename='images/Landlord.jpg') }}"
         alt="Landlord"
         class="w-full h-full object-cover shadow-md"
-    />
+      />
 
-    <!-- Overlay content -->
-    <div class="absolute inset-0 bg-black/30 flex flex-col justify-center items-center text-center px-4">
-        <h1 class="text-3xl md:text-5xl font-bold text-white mb-4">Welcome to Rate My Landlord</h1>
+      <!-- Overlay content -->
+      <div
+        class="absolute inset-0 bg-black/30 flex flex-col justify-center items-center text-center px-4"
+      >
+        <h1 class="text-3xl md:text-5xl font-bold text-white mb-4">
+          Welcome to Rate My Landlord
+        </h1>
         <p class="text-white text-md md:text-lg mb-6">
-        Find and review landlords in your area. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          Find and review landlords in your area. Lorem ipsum dolor sit amet,
+          consectetur adipiscing elit.
         </p>
-        <button class="bg-black text-white px-6 py-2 rounded-full hover:bg-gray-800 transition">
-        Get Started
+        <button
+          class="bg-black text-white px-6 py-2 rounded-full hover:bg-gray-800 transition"
+        >
+          Get Started
         </button>
-    </div>
+      </div>
     </section>
 
     <!-- Footer -->
     <footer class="bg-white border-t py-4 text-center text-sm text-gray-500">
-      © 2025 Rate My Landlo — Made with Flask + Tailwind
+      © 2025 Rate My Landlord — Made with Flask + Tailwind
     </footer>
   </body>
 </html>
