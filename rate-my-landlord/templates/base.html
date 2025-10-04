@@ -1,67 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rate My Professor Clone</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='/css/main.css') }}"
-    />
-  </head>
-  <body class="bg-gray-50 text-gray-900 flex flex-col min-h-screen">
-    <!-- Navbar -->
-    <nav class="bg-white shadow-sm">
-      <div
-        class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center"
-      >
-        <a href="#" class="text-xl font-bold text-blue-600">
-          Rate My Landlord
-        </a>
-        <!-- login and register buttons -->
-        <div class="flex space-x-4">
-          <a href="#" class="hover:text-green-700 my-auto"> Login </a>
-          <a href="#" class="text-white">
-            <button
-              class="rounded-full px-6 bg-black hover:text-white py-1 hover:bg-green-700"
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Rate My Professor Clone</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="{{ url_for('static', filename='/css/main.css') }}" />
+    </head>
+    <body class="bg-gray-50 text-gray-900 flex flex-col min-h-screen">
+        <!-- Navbar -->
+        <nav class="bg-white shadow-sm">
+            <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+                <a href="#" class="text-xl font-bold text-blue-600"> Rate My Landlord </a>
+                <!-- login and register buttons -->
+                <div class="flex space-x-4">
+                    <a href="#" class="hover:text-green-700 my-auto"> Login </a>
+                    <a href="#" class="text-white">
+                        <button
+                            class="rounded-full px-6 bg-black hover:text-white py-1 hover:bg-green-700"
+                        >
+                            Register
+                        </button></a
+                    >
+                </div>
+            </div>
+        </nav>
+        <section class="relative w-full h-80 md:h-[400px]">
+            <!-- Image -->
+            <img
+                src="{{ url_for('static', filename='images/Landlord.jpg') }}"
+                alt="Landlord"
+                class="w-full h-full object-cover shadow-md"
+            />
+
+            <!-- Overlay content -->
+            <div
+                class="absolute inset-0 bg-black/30 flex flex-col justify-center items-center text-center px-4"
             >
-              Register
-            </button></a
-          >
-        </div>
-      </div>
-    </nav>
-    <section class="relative w-full h-80 md:h-[400px]">
-      <!-- Image -->
-      <img
-        src="{{ url_for('static', filename='images/Landlord.jpg') }}"
-        alt="Landlord"
-        class="w-full h-full object-cover shadow-md"
-      />
+                <h1 class="text-3xl md:text-5xl font-bold text-white mb-4">
+                    Welcome to Rate My Landlord
+                </h1>
+                <p class="text-white text-md md:text-lg mb-6">
+                    Find and review landlords in your area. Lorem ipsum dolor sit amet, consectetur
+                    adipiscing elit.
+                </p>
+                <button
+                    class="bg-black text-white px-6 py-2 rounded-full hover:bg-gray-800 transition"
+                >
+                    Get Started
+                </button>
+            </div>
+        </section>
 
-      <!-- Overlay content -->
-      <div
-        class="absolute inset-0 bg-black/30 flex flex-col justify-center items-center text-center px-4"
-      >
-        <h1 class="text-3xl md:text-5xl font-bold text-white mb-4">
-          Welcome to Rate My Landlord
-        </h1>
-        <p class="text-white text-md md:text-lg mb-6">
-          Find and review landlords in your area. Lorem ipsum dolor sit amet,
-          consectetur adipiscing elit.
-        </p>
-        <button
-          class="bg-black text-white px-6 py-2 rounded-full hover:bg-gray-800 transition"
-        >
-          Get Started
-        </button>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-white border-t py-4 text-center text-sm text-gray-500">
-      © 2025 Rate My Landlord — Made with Flask + Tailwind
-    </footer>
-  </body>
+        <!-- Footer -->
+        <footer class="bg-white border-t py-4 text-center text-sm text-gray-500">
+            © 2025 Rate My Landlord — Made with Flask + Tailwind
+        </footer>
+    </body>
 </html>

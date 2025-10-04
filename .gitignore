@@ -1,3 +1,4 @@
 tailwind.config.js
 .env
 rate-my-landlord/__pycache__
+.vscode
