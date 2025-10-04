@@ -32,23 +32,41 @@
                 alt="Landlord"
                 class="w-full h-full object-cover shadow-md"
             />
-
-            <!-- Overlay content -->
+            <!-- Overlay -->
             <div
-                class="absolute inset-0 bg-black/30 flex flex-col justify-center items-center text-center px-4"
+                class="absolute inset-0 bg-black/40 flex flex-col justify-center items-center text-center px-4"
             >
-                <h1 class="text-3xl md:text-5xl font-bold text-white mb-4">
-                    Welcome to Rate My Landlord
-                </h1>
-                <p class="text-white text-md md:text-lg mb-6">
-                    Find and review landlords in your area. Lorem ipsum dolor sit amet, consectetur
-                    adipiscing elit.
-                </p>
-                <button
-                    class="bg-black text-white px-6 py-2 rounded-full hover:bg-gray-800 transition"
-                >
-                    Get Started
-                </button>
+                <h1 class="text-4xl md:text-5xl font-bold text-white mb-6">Rate My Landlord</h1>
+                <p class="text-white text-lg md:text-xl mb-4">Enter your area to get started.</p>
+
+                <!-- Search Bar -->
+                <div class="w-full max-w-md">
+                    <div class="flex items-center bg-white rounded-full shadow-md px-4 py-2">
+                        <svg
+                            class="w-5 h-5 text-gray-500 mr-2"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M21 21l-4.35-4.35M16.65 16.65A7.5 7.5 0 1116.65 2.5a7.5 7.5 0 010 14.15z"
+                            />
+                        </svg>
+                        <input
+                            type="text"
+                            placeholder="Your area"
+                            class="w-full bg-transparent focus:outline-none text-gray-700"
+                        />
+                    </div>
+
+                    <!-- Alternate Search Link -->
+                    <a href="#" class="text-blue-300 hover:underline mt-2 block text-sm">
+                        I'd like to look up a landlord by name.
+                    </a>
+                </div>
             </div>
         </section>
 
