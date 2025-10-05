@@ -13,6 +13,7 @@ blueprint = Blueprint('review', __name__, url_prefix='/review')
 db = firestore.client()
 
 @blueprint.route('/', methods=('GET', 'POST'))
+@blueprint.route('/submit/', methods=('GET', 'POST'))
 def submit_review():
     if "user_id" not in session:
         return redirect(url_for("auth.login"))
@@ -23,6 +24,7 @@ def submit_review():
         property_id = request.form['property_id']
         title = request.form['title']
         db.collection('review').add({
+            'title': title,
             'rating': rating,
             'body': body,
             'userId': db._get_collection_reference('user').document(session['user_id']),

@@ -16,9 +16,12 @@ db = firestore.client()
 def search():
     if request.method == 'POST':
         query_term = request.form["query"]
-        query = db.collection("landlord" if request.args.get("search") == "l" else "property").where("name", ">=", query_term).where("name", "<", query_term + "\uf8ff")
+        if request.args.get("search") == "l":
+            query = db.collection("landlord").where("name", ">=", query_term).where("name", "<", query_term + "\uf8ff")
+        else:
+            query = db.collection("property").where("addressLine1", ">=", query_term).where("addressLine1", "<", query_term + "\uf8ff")
         data = query.get()
         
-        return render_template('search.html', label="landlords" if request.args.get("search") == "l" else "properties", data=data, offset=1)
+        return render_template('search.html', label="landlords" if request.args.get("search") == "l" else "properties", data=data, offset=0)
         # return redirect("/")
-    return render_template('search.html', label="landlords" if request.args.get("search") == "l" else "properties", offset=1)
+    return render_template('search.html', label="landlords" if request.args.get("search") == "l" else "properties", offset=0)
