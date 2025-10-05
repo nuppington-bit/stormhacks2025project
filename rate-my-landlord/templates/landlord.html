@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>{{ landlord_name }} Profile</title>
         <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/review.css') }}" />
     </head>
     <body class="bg-gray-100 text-black min-h-screen font-sans flex justify-center px-4 py-8">
         <!-- Navbar -->
@@ -24,9 +25,10 @@
         </nav>
 
         <!-- Main Container -->
-        <div class="w-full max-w-6xl mt-20 flex gap-8">
+        <div class="w-full max-w-6xl mt-14 flex gap-8">
             <!-- Reviews Section (Left) -->
             <section class="w-1/2 space-y-2">
+                <div class="info-icon">{{ landlord_name[0] }}</div>
                 <h2 class="text-2xl sm:text-3xl font-semibold text-black">
                     Reviews for {{ landlord_name }}
                 </h2>
@@ -46,7 +48,7 @@
             </section>
 
             <!-- Properties Section (Right) -->
-            <section class="w-1/2 space-y-4">
+            <section class="w-1/2 space-y-2 mt-10">
                 <h2 class="text-2xl sm:text-3xl font-semibold text-black">Properties</h2>
                 <div class="space-y-4">
                     {% for property in properties %}
