@@ -14,14 +14,20 @@
                 <a href="#" class="text-xl font-bold text-blue-600"> Rate My Landlord </a>
                 <!-- login and register buttons -->
                 <div class="flex space-x-4">
-                    <a href="#" class="hover:text-green-700 my-auto"> Login </a>
-                    <a href="#" class="text-white">
+                    <a
+                        href="/auth/login"
+                        class="hover:text-green-700 my-auto"
+                        style="visibility:{{ logged_in_visibility }}"
+                    >
+                        Login
+                    </a>
+                    <a href={{ logged_in_url }} class="text-white">
                         <button
                             class="rounded-full px-6 bg-black hover:text-white py-1 hover:bg-green-700"
                         >
-                            Register
-                        </button></a
-                    >
+                            {{ register }}
+                        </button>
+                    </a>
                 </div>
             </div>
         </nav>
@@ -63,7 +69,7 @@
                     </div>
 
                     <!-- Alternate Search Link -->
-                    <a href="#" class="text-blue-300 hover:underline mt-2 block text-sm">
+                    <a href="#" class="text-white mt-2 block text-1xl">
                         I'd like to look up a landlord by name.
                     </a>
                 </div>
