@@ -21,6 +21,13 @@
                 {{ property.get("addressLine1") + property.get("addressLine2") +
                 property.get("city") + ", " + property.get("province")}}
             </p>
+            <a href={{ url_for("review.submit_review", landlord_id=landlord.id, property_id=property.id) }}>
+                <button
+                    class="rounded-full px-6 bg-black text-white py-1 hover:bg-green-700 transition"
+                >
+                    Review this property
+                </button>
+            </a>
         </div>
         {% endfor %}
     </body>

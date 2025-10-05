@@ -12,16 +12,15 @@ from werkzeug.security import check_password_hash, generate_password_hash
 blueprint = Blueprint('review', __name__, url_prefix='/review')
 db = firestore.client()
 
-@blueprint.route('/', methods=('GET', 'POST'))
-@blueprint.route('/submit/', methods=('GET', 'POST'))
-def submit_review():
+@blueprint.route('/submit/<landlord_id>/<property_id>', methods=('GET', 'POST'))
+def submit_review(landlord_id, property_id):
     if "user_id" not in session:
         return redirect(url_for("auth.login"))
     if request.method == 'POST':
         rating = request.form['rating']
         body = request.form['body']
-        landlord_id = request.form['landlord_id']
-        property_id = request.form['property_id']
+        landlord_id = db._get_collection_reference('landlord').document(landlord_id)
+        property_id = db._get_collection_reference('property').document(property_id)
         title = request.form['title']
         db.collection('review').add({
             'title': title,
