@@ -3,25 +3,63 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
+        <title>{{ landlord_name }} Profile</title>
         <script src="https://cdn.tailwindcss.com"></script>
-        <!-- <link rel="stylesheet" href="{{ url_for('static', filename='/css/main.css') }}" /> -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/review.css') }}" />
     </head>
-    <body>
-        <h1>{{ landlord_name }}</h1>
-        {% for review in reviews %}
-        <div class="review">
-            <h2>{{ review.title }}</h2>
-            <p>Rating: {{ review.rating }}</p>
-            <p>{{ review.body }}</p>
-        </div>
-        {% endfor %} {% for property in properties %}
-        <div class="property">
-            <p>
-                {{ property.get("addressLine1") + property.get("addressLine2") +
-                property.get("city") + ", " + property.get("province")}}
-            </p>
-            <a href={{ url_for("review.submit_review", landlord_id=landlord.id, property_id=property.id) }}>
+    <body class="bg-gray-100 text-black min-h-screen font-sans flex justify-center px-4 py-8">
+        <!-- Navbar -->
+        <nav class="bg-white w-full fixed top-0 left-0 z-10 shadow">
+            <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+                <a href="/" class="text-xl font-bold text-black">Rate My Landlord</a>
+                <div class="flex space-x-4">
+                    <a href="/auth/register">
+                        <button
+                            class="rounded-full px-6 bg-black text-white py-1 hover:bg-green-700 transition"
+                        >
+                            Register
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Container -->
+        <div class="w-full max-w-6xl mt-14 flex gap-8">
+            <!-- Reviews Section (Left) -->
+            <section class="w-1/2 space-y-2">
+                <div class="info-icon">{{ landlord_name[0] }}</div>
+                <h2 class="text-2xl sm:text-3xl font-semibold text-black">
+                    Reviews for {{ landlord_name }}
+                </h2>
+                <div class="space-y-4">
+                    {% for review in reviews %}
+                    <div
+                        class="bg-white rounded-xl p-6 shadow-md hover:shadow-black transition duration-300"
+                    >
+                        <h3 class="text-xl font-bold text-black mb-1">{{ review.title }}</h3>
+                        <p class="text-yellow-600 font-medium mb-2">
+                            Rating: {{ review.rating }}/5
+                        </p>
+                        <p class="text-gray-800 break-words whitespace-normal">{{ review.body }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </section>
+
+            <!-- Properties Section (Right) -->
+            <section class="w-1/2 space-y-2 mt-10">
+                <h2 class="text-2xl sm:text-3xl font-semibold text-black">Properties</h2>
+                <div class="space-y-4">
+                    {% for property in properties %}
+                    <div
+                        class="bg-white rounded-lg p-4 shadow-md hover:shadow-black transition duration-300"
+                    >
+                        <p class="text-gray-800">
+                            {{ property.get("addressLine1") }} {{ property.get("addressLine2") }},
+                            {{ property.get("city") }}, {{ property.get("province") }}
+                        </p>
+                        <a href={{ url_for("review.submit_review", landlord_id=landlord.id, property_id=property.id) }}>
                 <button
                     class="rounded-full px-6 bg-black text-white py-1 hover:bg-green-700 transition"
                 >
@@ -29,6 +67,9 @@
                 </button>
             </a>
         </div>
-        {% endfor %}
+                    {% endfor %}
+                </div>
+            </section>
+        </div>
     </body>
 </html>

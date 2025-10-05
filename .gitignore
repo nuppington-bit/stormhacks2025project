@@ -2,3 +2,4 @@ tailwind.config.js
 .env
 rate-my-landlord/__pycache__
 .vscode
+secret-key.json
