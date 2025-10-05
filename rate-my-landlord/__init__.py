@@ -9,6 +9,8 @@ def create_app(test_config=None):
     app.config.from_mapping(
         SECRET_KEY='dev'
     )
+    cred = firebase_admin.credentials.Certificate(os.getenv("FIREBASE_CREDENTIALS"))
+    firebase_admin.initialize_app(cred)
 
     if test_config is None:
         # load the instance config, if it exists, when not testing
@@ -29,6 +31,13 @@ def create_app(test_config=None):
         return render_template('base.html', logged_in_visibility="hidden" if logged_in else "visible", register="Register" if not logged_in else "Log out", logged_in_url="/auth/logout" if logged_in else "/auth/register")
     
     from . import auth
+    from . import review
+    from . import search
+    from . import landlord
+
     app.register_blueprint(auth.blueprint)
+    app.register_blueprint(review.blueprint)
+    app.register_blueprint(search.blueprint)
+    app.register_blueprint(landlord.blueprint)
 
     return app

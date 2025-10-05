@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <!-- <link rel="stylesheet" href="{{ url_for('static', filename='/css/main.css') }}" /> -->
+    </head>
+    <body>
+        <h1>{{ landlord_name }}</h1>
+        {% for review in reviews %}
+        <div class="review">
+            <h2>{{ review.title }}</h2>
+            <p>Rating: {{ review.rating }}</p>
+            <p>{{ review.body }}</p>
+        </div>
+        {% endfor %} {% for property in properties %}
+        <div class="property">
+            <p>
+                {{ property.get("addressLine1") + property.get("addressLine2") +
+                property.get("city") + ", " + property.get("province")}}
+            </p>
+        </div>
+        {% endfor %}
+    </body>
+</html>

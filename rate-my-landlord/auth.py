@@ -9,8 +9,6 @@ from flask import (
 from werkzeug.security import check_password_hash, generate_password_hash
 
 blueprint = Blueprint('auth', __name__, url_prefix='/auth')
-cred = firebase_admin.credentials.Certificate(os.getenv("FIREBASE_CREDENTIALS"))
-firebase_admin.initialize_app(cred)
 db = firestore.client()
 @blueprint.route('/register', methods=('GET', 'POST'))
 def register():
