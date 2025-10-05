@@ -43,6 +43,7 @@
                         min="1"
                         max="5"
                         required
+                        value="{{ rating if rating is defined else '' }}"
                         class="w-full border border-black rounded-md px-2 py-1.5 focus:outline-none focus:ring-2 focus:ring-black"
                     />
                 </div>
@@ -55,6 +56,7 @@
                         id="title"
                         name="title"
                         required
+                        value="{{ title if title is defined else '' }}"
                         class="w-full border border-black rounded-md px-2 py-1.5 focus:outline-none focus:ring-2 focus:ring-black"
                     />
                 </div>
@@ -68,18 +70,8 @@
                         rows="4"
                         required
                         class="w-full border border-black rounded-md px-2 py-1.5 focus:outline-none focus:ring-2 focus:ring-black resize-none"
-                    ></textarea>
+                    >{{ body if body is defined else '' }}</textarea>
                 </div>
-
-                <!-- Moderation Info -->
-                <p class="text-xs text-gray-500 mb-4 text-center">
-                    Moderated by
-                    <img
-                        alt="Google Gemini logo 2025"
-                        class="inline h-[0.9em] m-auto"
-                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Google_Gemini_logo_2025.svg/256px-Google_Gemini_logo_2025.svg.png?20250702084013"
-                    />
-                </p>
 
                 <!-- Submit Button -->
                 <div class="text-center">
