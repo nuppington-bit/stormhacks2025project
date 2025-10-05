@@ -1,5 +1,5 @@
 import os
-
+import firebase_admin
 from flask import Flask, render_template
 
 
@@ -7,8 +7,7 @@ def create_app(test_config=None):
     # create and configure the app
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
-        SECRET_KEY='dev',
-        DATABASE=os.path.join(app.instance_path, 'rate_my_landlord.sqlite'),
+        SECRET_KEY='dev'
     )
 
     if test_config is None:
@@ -27,5 +26,8 @@ def create_app(test_config=None):
     @app.route('/')
     def main_page():
         return render_template('base.html')
+    
+    from . import auth
+    app.register_blueprint(auth.blueprint)
 
     return app
