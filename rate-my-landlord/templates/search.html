@@ -11,6 +11,9 @@
             <input type="text" id="query" name="query" required />
         </form>
         <section>
+            {% if data|length == 0 %}
+                <h2>No results found</h2>
+            {% else %}
             {% for i in range(data|length % 10) %}
                 <tr>
                     <td><a href={{ url_for("landlord.landlord", landlord_id=data[i + offset].id) }}>{{ data[i + offset].get("name") }}</a> </td>
@@ -25,6 +28,7 @@
                 {% if data|length - offset > 10 %}
                     <a href={{ url_for("search.search", offset=offset + 10) + "/?search="+request.args.get("search") }}>></a>
                 {% endif %}
+            {% endif %}
             {% endif %}
         </section>
     </body>
