@@ -7,7 +7,7 @@
         <script src="https://cdn.tailwindcss.com"></script>
         <link rel="stylesheet" href="{{ url_for('static', filename='/css/main.css') }}" />
     </head>
-    <body class="bg-gray-50 text-gray-900 flex flex-col min-h-screen">
+    <body class="bg-white text-gray-900 flex flex-col min-h-screen">
         <!-- Navbar -->
         <nav class="bg-white shadow-sm">
             <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
@@ -68,6 +68,22 @@
                     </a>
                 </div>
             </div>
+        </section>
+        <!-- Header and text -->
+         <section class="text-center  py-10 ">
+            <div>
+                <h1 class=" font-bold  text-3xl md:text-4xl">Join The RML Family</h1>
+                <h3 class="text-4xl">Love RML? Let's make it official.</h3>
+            </div>
+         </section>
+
+        <!-- Join Section Image -->
+        <section class="w-full  relative my-12 px-4 ">
+            <img
+                src="{{ url_for('static', filename='images/rml.png') }}"
+                alt="Join the RMP Family"
+                class="w-full h-auto rounded-lg "
+            />
         </section>
 
         <!-- Footer -->
