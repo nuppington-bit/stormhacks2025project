@@ -1,6 +1,6 @@
 import os
 import firebase_admin
-from flask import Flask, render_template, session
+from flask import Flask, redirect, render_template, request, session, url_for
 
 
 def create_app(test_config=None):
@@ -25,9 +25,12 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-    @app.route('/')
+    @app.route('/', methods=('GET', 'POST'))
     def main_page():
         logged_in = 'user_id' in session
+        if request.method == 'POST':
+            query_term = request.form["query"]
+            return redirect(url_for('search.search_results', query=query_term, search="p"))
         return render_template('base.html', logged_in_visibility="hidden" if logged_in else "visible", register="Register" if not logged_in else "Log out", logged_in_url="/auth/logout" if logged_in else "/auth/register")
     
     from . import auth

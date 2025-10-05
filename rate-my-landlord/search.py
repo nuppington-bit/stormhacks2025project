@@ -25,3 +25,13 @@ def search():
         return render_template('search.html', label="landlords" if request.args.get("search") == "l" else "properties", data=data, offset=0)
         # return redirect("/")
     return render_template('search.html', label="landlords" if request.args.get("search") == "l" else "properties", offset=0)
+
+@blueprint.route('/<query>', methods=('GET', 'POST'))
+def search_results(query):
+    if request.args.get("search") == "l":
+        query_data = db.collection("landlord").where("name", ">=", query).where("name", "<", query + "\uf8ff")
+    else:
+        query_data = db.collection("property").where("addressLine1", ">=", query).where("addressLine1", "<", query + "\uf8ff")
+    data = query_data.get()
+
+    return render_template('search.html', label="landlords" if request.args.get("search") == "l" else "properties", data=data, offset=0)
