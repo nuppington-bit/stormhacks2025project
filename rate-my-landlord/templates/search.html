@@ -13,17 +13,17 @@
         <section>
             {% for i in range(data|length % 10) %}
                 <tr>
-                    <td><a href={{ url_for("landlord.landlord", landlord_id=data[i + offset].id) }}>{{ data[i + offset-1].get("name") }}</a> </td>
+                    <td><a href={{ url_for("landlord.landlord", landlord_id=data[i + offset].id) }}>{{ data[i + offset].get("name") }}</a> </td>
                     </br>
                 </tr>
             {% endfor %}
             <br />
             {% if offset != undefined %}
-                {% if offset >= 11 %}
-                    <a href={{ url_for("search", offset=offset - 10) + "/?search="+request.args.get("search") }}>></a>
+                {% if offset >= 10 %}
+                    <a href={{ url_for("search.search", offset=offset - 10) + "/?search="+request.args.get("search") }}>></a>
                 {% endif %}
-                {% if data|length - offset <= 0 %}
-                    <a href={{ url_for("search", offset=offset + 10) + "/?search="+request.args.get("search") }}>></a>
+                {% if data|length - offset > 10 %}
+                    <a href={{ url_for("search.search", offset=offset + 10) + "/?search="+request.args.get("search") }}>></a>
                 {% endif %}
             {% endif %}
         </section>
