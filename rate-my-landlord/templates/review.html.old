@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>RML Navbar</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/review.css') }}" />
+
+    </head>
+
+    <body>
+        <nav class="navbar">
+            <div class="nav-left">
+                <a href="#" class="nav-link">Login</a>
+            </div>
+
+            <div class="nav-center">
+                <a href="#" class="nav-logo">RML</a>
+            </div>
+
+            <div class="nav-right">
+                <form class="search-form">
+                    <input type="text" placeholder="Search..." />
+                </form>
+            </div>
+        </nav>
+        <div class="info-box">
+            <div class="info-left">
+                <div class="info-icon">H</div>
+                <div class="info-name">Horashio Lu</div>
+            </div>
+            <div class="info-right">0/5 Nobody likes him.</div>
+        </div>
+        <div class="info-box">
+            <div class="info-left">
+                <div class="info-icon">W</div>
+                <div class="info-name">Walter White</div>
+            </div>
+            <div class="info-right">5/5 Very kind.</div>
+        </div>
+        <div class="info-box">
+            <div class="info-left">
+                <div class="info-icon">N</div>
+                <div class="info-name">Noelle Zebra</div>
+            </div>
+            <div class="info-right">3/5 Nice sometimes.</div>
+        </div>
+        <div class="info-box">
+            <div class="info-left">
+                <div class="info-icon">T</div>
+                <div class="info-name">Tesla Model</div>
+            </div>
+            <div class="info-right">1/5 Very mean.</div>
+        </div>
+        <div class="info-box">
+            <div class="info-left">
+                <div class="info-icon">P</div>
+                <div class="info-name">Porky John</div>
+            </div>
+            <div class="info-right">0/5 Horrible.</div>
+        </div>
+        <div class="info-box">
+            <div class="info-left">
+                <div class="info-icon">J</div>
+                <div class="info-name">John Doe</div>
+            </div>
+            <div class="info-right">5/5 Kindest people ever.</div>
+        </div>
+    </body>
+</html>
