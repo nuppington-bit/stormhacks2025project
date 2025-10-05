@@ -9,15 +9,15 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
     </head>
 
-    <body class="bg-[#1f293a] text-white flex flex-col min-h-screen">
+    <body class=" text-white flex flex-col min-h-screen">
         <!-- Navbar -->
-        <nav class="bg-[#1f293a] shadow-sm w-full fixed top-0 left-0 z-10">
+        <nav class="bg-white w-full fixed top-0 left-0 z-10">
             <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
-                <a href="#" class="text-xl font-bold text-[#0ef]">Rate My Landlord</a>
+                <a href="#" class="text-xl font-bold text-black">Rate My Landlord</a>
                 <div class="flex space-x-4">
                     <a href="#">
                         <button
-                            class="rounded-full px-6 bg-[#0ef] text-black py-1 hover:bg-green-700 transition"
+                            class="rounded-full px-6 bg-black text-white py-1 hover:bg-green-700 transition"
                         >
                             Register
                         </button>
@@ -52,7 +52,7 @@
                         <label>Password</label>
                     </div>
                     <input type="submit" class="btn" value="Login" />
-                    <div class="signup-link">
+                    <div class="register-link">
                         <a href="#">Register</a>
                     </div>
                 </form>
