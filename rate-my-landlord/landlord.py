@@ -16,16 +16,27 @@ def landlord(landlord_id):
     landlord_ref = db.collection('landlord').document(landlord_id)
     landlord = landlord_ref.get()
 
-    reviews_ref = db.collection('review').where("landlordId", '==', landlord_ref)
+    # Reviews for this landlord
+    reviews_ref = db.collection('review').where(
+        "landlordId", '==', landlord_ref)
     reviews = reviews_ref.get()
-    
-    property_ref = db.collection('property').where("landlordId", '==', landlord_ref)
+
+    # Properties for this landlord
+    property_ref = db.collection('property').where(
+        "landlordId", '==', landlord_ref)
     properties = property_ref.get()
+
     review_list = []
-    
     for review in reviews:
         review_data = review.to_dict()
-        review_data['addressLine1'] = review.get('propertyId').get().get('addressLine1')
+        review_data['addressLine1'] = review.get(
+            'propertyId').get().get('addressLine1')
         review_list.append(review_data)
 
-    return render_template('landlord.html', landlord_name=landlord.get("name"), landlord=landlord_ref, reviews=review_list, properties=properties)
+    return render_template(
+        'landlord.html',
+        landlord_name=landlord.get("name"),
+        landlord=landlord_ref,
+        reviews=review_list,
+        properties=properties
+    )

@@ -3,40 +3,117 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
+        <title>Search {{ label }}</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
     </head>
-    <body>
-        <form method="post">
-            <label for="query">Search {{ label }}</label>
-            <input type="text" id="query" name="query" required />
-        </form>
-        <section>
-            {% if data|length == 0 %}
-                <h2>No results found</h2>
-            {% elif request.args.get("search") == "l" %}
-                {% for i in range(data|length % 10) %}
-                    <tr>
-                        <td><a href={{ url_for("landlord.landlord", landlord_id=data[i + offset].id) }}>{{ data[i + offset].get("name") }}</a> </td>
-                        </br>
-                    </tr>
-                {% endfor %}
-                <br />
-                {% if offset != undefined %}
-                    {% if offset >= 10 %}
-                        <a href={{ url_for("search.search", offset=offset - 10) + "/?search="+request.args.get("search") }}>></a>
+    <body class="bg-white text-black min-h-screen font-sans flex flex-col">
+        <!-- Navbar -->
+        <nav class="bg-white w-full fixed top-0 left-0 z-10 ">
+            <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+                <a href="/" class="text-xl font-bold text-black">Rate My Landlord</a>
+                <div class="flex space-x-4">
+                    <a href="/auth/register">
+                        <button
+                            class="rounded-full px-6 bg-black text-white py-1 hover:bg-green-700 transition"
+                        >
+                            Register
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="pt-28 flex justify-center w-full px-4">
+            <div class="w-full max-w-3xl">
+                <!-- Search Card -->
+                <div class="bg-gray-100 shadow-lg rounded-xl p-6">
+                    <h1 class="text-2xl font-bold mb-4 text-center">Search {{ label }}</h1>
+
+                    <!-- Flash Messages -->
+                    {% with messages = get_flashed_messages(with_categories=true) %} {% if messages
+                    %}
+                    <div class="mb-4">
+                        {% for category, message in messages %}
+                        <p
+                            class="text-center font-semibold {% if category == 'error' %}text-red-600{% elif category == 'success' %}text-green-600{% else %}text-yellow-600{% endif %}"
+                        >
+                            {{ message }}
+                        </p>
+                        {% endfor %}
+                    </div>
+                    {% endif %} {% endwith %}
+
+                    <!-- Search Form -->
+                    <form method="get" class="flex flex-col sm:flex-row items-center gap-2">
+                        <input
+                            type="text"
+                            id="query"
+                            name="query"
+                            placeholder="Type to search..."
+                            required
+                            value="{{ request.args.get('query', '') }}"
+                            class="border border-black rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-black w-full sm:w-auto"
+                        />
+                        <button
+                            type="submit"
+                            class="bg-black text-white px-4 py-2 rounded-full hover:bg-green-700 transition"
+                        >
+                            Search
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Results Card -->
+                <div class="bg-white shadow-lg rounded-xl p-6 mt-6">
+                    {% if data|length == 0 %}
+                    <h2 class="text-center text-gray-500 font-semibold">No results found</h2>
+                    {% elif request.args.get("search") == "l" %}
+                    <ul class="space-y-2">
+                        {% for i in range(data|length % 10) %}
+                        <li>
+                            <a
+                                href="{{ url_for('landlord.landlord', landlord_id=data[i + offset].id) }}"
+                                class="text-blue-600 hover:underline font-medium"
+                            >
+                                {{ data[i + offset].get("name") }}
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    <div class="flex justify-between mt-4">
+                        {% if offset and offset >= 10 %}
+                        <a
+                            href="{{ url_for('search.search', offset=offset - 10) + '/?search=' + request.args.get('search') }}"
+                            class="text-black hover:text-green-700 font-semibold"
+                            >&lt; Previous</a
+                        >
+                        {% endif %} {% if data|length - offset > 10 %}
+                        <a
+                            href="{{ url_for('search.search', offset=offset + 10) + '/?search=' + request.args.get('search') }}"
+                            class="text-black hover:text-green-700 font-semibold"
+                            >Next &gt;</a
+                        >
+                        {% endif %}
+                    </div>
+                    {% elif request.args.get("search") == "p" %}
+                    <ul class="space-y-2">
+                        {% for i in range(data|length % 10) %}
+                        <li>
+                            <a
+                                href="{{ url_for('landlord.landlord', landlord_id=data[i + offset].get('landlordId').id) }}"
+                                class="text-blue-600 hover:underline font-medium"
+                            >
+                                {{ data[i + offset].get('addressLine1') }}, {{ data[i +
+                                offset].get('city') }}, {{ data[i + offset].get('province') }}
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
                     {% endif %}
-                    {% if data|length - offset > 10 %}
-                        <a href={{ url_for("search.search", offset=offset + 10) + "/?search="+request.args.get("search") }}>></a>
-                    {% endif %}
-                {% endif %}
-            {% elif request.args.get("search") == "p" %}
-                {% for i in range(data|length % 10) %}
-                    <tr>
-                        <td><a href={{ url_for("landlord.landlord", landlord_id=data[i + offset].get("landlordId").id) }}>{{ data[i + offset].get("addressLine1") + ", " + data[i + offset].get("city") + ", " + data[i + offset].get("province") }}</a> </td>
-                        </br>
-                    </tr>
-                {% endfor %}
-            {% endif %}
-        </section>
+                </div>
+            </div>
+        </main>
     </body>
 </html>
