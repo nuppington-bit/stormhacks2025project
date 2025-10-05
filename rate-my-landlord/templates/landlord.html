@@ -37,11 +37,16 @@
                     <div
                         class="bg-white rounded-xl p-6 shadow-md hover:shadow-black transition duration-300"
                     >
-                        <h3 class="text-xl font-bold text-black mb-1">{{ review.title }}</h3>
-                        <p class="text-yellow-600 font-medium mb-2">
-                            Rating: {{ review.rating }}/5
-                        </p>
-                        <p class="text-gray-800 break-words whitespace-normal">{{ review.body }}</p>
+                        <div>
+                            <h3 class="text-xl font-bold text-black mb-1">{{ review.title }}</h3>
+                            <p class="text-yellow-600 font-medium mb-2">
+                                Rating: {{ review.rating }}/5
+                            </p>
+                            <p class="text-gray-800 break-words whitespace-normal">{{ review.body }}</p>
+                        </div>
+                        <div>
+                            {{ review.addressLine1 }}
+                        </div>
                     </div>
                     {% endfor %}
                 </div>

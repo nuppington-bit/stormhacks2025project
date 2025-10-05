@@ -60,15 +60,17 @@
                                 d="M21 21l-4.35-4.35M16.65 16.65A7.5 7.5 0 1116.65 2.5a7.5 7.5 0 010 14.15z"
                             />
                         </svg>
+                        <form method="get">
                         <input
                             type="text"
-                            placeholder="Your area"
+                            placeholder="Search by address, city, or province"
                             class="w-full bg-transparent focus:outline-none text-gray-700"
                         />
+                      </form>
                     </div>
 
                     <!-- Alternate Search Link -->
-                    <a href="#" class="text-white mt-2 block text-1xl">
+                    <a href={{ "/search/?search=l" }} class="text-white mt-2 block text-1xl">
                         I'd like to look up a landlord by name.
                     </a>
                 </div>
