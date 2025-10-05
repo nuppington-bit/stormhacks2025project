@@ -3,19 +3,65 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
+        <title>Rate My Landlord - Register</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <!-- Link your CSS properly -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
     </head>
-    <body>
-        {% block header %}
-        <h1>{% block title %}Register{% endblock %}</h1>
-        {% endblock %} {% block content %}
-        <form method="post">
-            <label for="emailAddress">Email Address</label>
-            <input name="emailAddress" id="emailAddress" required />
-            <label for="password">Password</label>
-            <input type="password" name="password" id="password" required />
-            <input type="submit" value="Register" />
-        </form>
-        {% endblock %}
+
+    <body class="bg-[#1f293a] text-white flex flex-col min-h-screen">
+        <!-- Navbar -->
+        <nav class="bg-[#1f293a] shadow-sm w-full fixed top-0 left-0 z-10">
+            <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+                <a href="#" class="text-xl font-bold text-[#0ef]">Rate My Landlord</a>
+                <div class="flex space-x-4">
+                    <a href="#">
+                        <button
+                            class="rounded-full px-6 bg-[#0ef] text-black py-1 hover:bg-green-700 transition"
+                        >
+                            Login
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Centered Login Section -->
+        <div class="container">
+            <div class="login-box">
+                <h2>Register</h2>
+                <form method="post">
+                    <div class="input-box">
+                        <input
+                            class="rounded-full border-2 px-3 py-1"
+                            name="emailAddress"
+                            id="emailAddress"
+                            required
+                        />
+                        <label>Email</label>
+                    </div>
+                    <div class="input-box">
+                        <input
+                            type="password"
+                            name="password"
+                            id="password"
+                            class="rounded-full border-2 px-3 py-1"
+                            required
+                        />
+                        <label>Password</label>
+                    </div>
+                    <input type="submit" class="btn" value="Register" />
+                    <div class="signup-link">
+                        <a href="#">Login</a>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Animated glowing lines -->
+            {% for i in range(50) %}
+            <span style="--i: {{ i }}"></span>
+            {% endfor %}
+        </div>
+        <script src="{{ url_for('static', filename='js/animation.js') }}"></script>
     </body>
 </html>
