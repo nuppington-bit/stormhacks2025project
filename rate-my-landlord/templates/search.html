@@ -13,22 +13,29 @@
         <section>
             {% if data|length == 0 %}
                 <h2>No results found</h2>
-            {% else %}
-            {% for i in range(data|length % 10) %}
-                <tr>
-                    <td><a href={{ url_for("landlord.landlord", landlord_id=data[i + offset].id) }}>{{ data[i + offset].get("name") }}</a> </td>
-                    </br>
-                </tr>
-            {% endfor %}
-            <br />
-            {% if offset != undefined %}
-                {% if offset >= 10 %}
-                    <a href={{ url_for("search.search", offset=offset - 10) + "/?search="+request.args.get("search") }}>></a>
+            {% elif request.args.get("search") == "l" %}
+                {% for i in range(data|length % 10) %}
+                    <tr>
+                        <td><a href={{ url_for("landlord.landlord", landlord_id=data[i + offset].id) }}>{{ data[i + offset].get("name") }}</a> </td>
+                        </br>
+                    </tr>
+                {% endfor %}
+                <br />
+                {% if offset != undefined %}
+                    {% if offset >= 10 %}
+                        <a href={{ url_for("search.search", offset=offset - 10) + "/?search="+request.args.get("search") }}>></a>
+                    {% endif %}
+                    {% if data|length - offset > 10 %}
+                        <a href={{ url_for("search.search", offset=offset + 10) + "/?search="+request.args.get("search") }}>></a>
+                    {% endif %}
                 {% endif %}
-                {% if data|length - offset > 10 %}
-                    <a href={{ url_for("search.search", offset=offset + 10) + "/?search="+request.args.get("search") }}>></a>
-                {% endif %}
-            {% endif %}
+            {% elif request.args.get("search") == "p" %}
+                {% for i in range(data|length % 10) %}
+                    <tr>
+                        <td><a href={{ url_for("landlord.landlord", landlord_id=data[i + offset].get("landlordId").id) }}>{{ data[i + offset].get("addressLine1") + ", " + data[i + offset].get("city") + ", " + data[i + offset].get("province") }}</a> </td>
+                        </br>
+                    </tr>
+                {% endfor %}
             {% endif %}
         </section>
     </body>
