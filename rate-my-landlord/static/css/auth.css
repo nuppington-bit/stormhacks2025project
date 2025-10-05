@@ -20,17 +20,7 @@ body {
     justify-content: center;
     align-items: center;
 }
-.container span {
-    position: absolute;
-    left: 41%;
-    width: 32px;
-    height: 6px;
-    background: #000000;
-    border-radius: 8px;
-    transform-origin: 115px;
-    transform: scale(2.2) rotate(calc(var(--i) * (360deg / 50)));
-    
-}
+
 
 @keyframes animateBlink {
     0% {
@@ -41,8 +31,22 @@ body {
     }
 }
 .login-box {
-    position: absolute;
-    width: 400px;
+  background: white; /* you can change to rgba(255, 255, 255, 0.95) if you want see-through look */
+  color: black;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+  border: 1px solid #e5e7eb;
+}
+
+/* Optional: Add a little hover lift effect */
+.login-box:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
 }
 .login-box form {
     width: 100%;

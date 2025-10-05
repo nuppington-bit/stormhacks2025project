@@ -3,30 +3,93 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
+        <title>Submit Review</title>
         <script src="https://cdn.tailwindcss.com"></script>
         <link rel="stylesheet" href="{{ url_for('static', filename='/css/main.css') }}" />
     </head>
-    <body>
-        <form method="post" class="text-white">
-            <label for="rating">Rating (1-5):</label>
-            <input type="number" id="rating" name="rating" min="1" max="5" required />
-            <br />
-            <label for="title">Review title:</label>
-            <input type="text" id="title" name="title" required />
-            <br />
-            <label for="body">Review body:</label>
-            <textarea id="body" name="body" rows="4" cols="50" required></textarea>
-            <p>
-                Moderated by
-                <img
-                    alt="Google Gemini logo 2025"
-                    class="inline h-[1em] m-auto"
-                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Google_Gemini_logo_2025.svg/256px-Google_Gemini_logo_2025.svg.png?20250702084013"
-                />
-            </p>
-            <br />
-            <input type="submit" value="Submit Review" />
-        </form>
+
+    <body class="bg-white text-black min-h-screen font-sans">
+        <!-- Navbar -->
+        <nav class="bg-white w-full fixed top-0 left-0 z-10">
+            <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+                <a href="/" class="text-xl font-bold text-black">Rate My Landlord</a>
+                <div class="flex space-x-4">
+                    <a href="/auth/register">
+                        <button
+                            class="rounded-full px-6 bg-black text-white py-1 hover:bg-green-700 transition"
+                        >
+                            Register
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Form Section -->
+        <main class="flex justify-center items-center pt-28 px-2">
+            <form
+                method="post"
+                class="bg-white shadow-md rounded-xl p-6 w-full max-w-md border border-gray-200"
+            >
+                <h1 class="text-2xl font-bold mb-4 text-center">Submit a Review</h1>
+
+                <!-- Rating -->
+                <div class="mb-3">
+                    <label for="rating" class="block font-semibold mb-1">Rating (1-5)</label>
+                    <input
+                        type="number"
+                        id="rating"
+                        name="rating"
+                        min="1"
+                        max="5"
+                        required
+                        class="w-full border border-black rounded-md px-2 py-1.5 focus:outline-none focus:ring-2 focus:ring-black"
+                    />
+                </div>
+
+                <!-- Title -->
+                <div class="mb-3">
+                    <label for="title" class="block font-semibold mb-1">Review Title</label>
+                    <input
+                        type="text"
+                        id="title"
+                        name="title"
+                        required
+                        class="w-full border border-black rounded-md px-2 py-1.5 focus:outline-none focus:ring-2 focus:ring-black"
+                    />
+                </div>
+
+                <!-- Body -->
+                <div class="mb-3">
+                    <label for="body" class="block font-semibold mb-1">Review Body</label>
+                    <textarea
+                        id="body"
+                        name="body"
+                        rows="4"
+                        required
+                        class="w-full border border-black rounded-md px-2 py-1.5 focus:outline-none focus:ring-2 focus:ring-black resize-none"
+                    ></textarea>
+                </div>
+
+                <!-- Moderation Info -->
+                <p class="text-xs text-gray-500 mb-4 text-center">
+                    Moderated by
+                    <img
+                        alt="Google Gemini logo 2025"
+                        class="inline h-[0.9em] m-auto"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Google_Gemini_logo_2025.svg/256px-Google_Gemini_logo_2025.svg.png?20250702084013"
+                    />
+                </p>
+
+                <!-- Submit Button -->
+                <div class="text-center">
+                    <input
+                        type="submit"
+                        value="Submit Review"
+                        class="bg-black text-white font-semibold rounded-full px-5 py-1.5 hover:bg-green-700 transition cursor-pointer"
+                    />
+                </div>
+            </form>
+        </main>
     </body>
 </html>
