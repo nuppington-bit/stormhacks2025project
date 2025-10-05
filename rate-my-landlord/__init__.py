@@ -1,6 +1,6 @@
 import os
 import firebase_admin
-from flask import Flask, render_template
+from flask import Flask, render_template, session
 
 
 def create_app(test_config=None):
@@ -25,7 +25,8 @@ def create_app(test_config=None):
 
     @app.route('/')
     def main_page():
-        return render_template('base.html')
+        logged_in = 'user_id' in session
+        return render_template('base.html', logged_in_visibility="hidden" if logged_in else "visible", register="Register" if not logged_in else "Log out", logged_in_url="/auth/logout" if logged_in else "/auth/register")
     
     from . import auth
     app.register_blueprint(auth.blueprint)
